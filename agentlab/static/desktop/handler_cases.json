@@ -1,0 +1,53 @@
+[
+  {
+    "name": "starter",
+    "source": "function sendEmail(message) {\n  const outgoing = { ...message };\n  return outgoing;\n}\nmodule.exports = { sendEmail };\n",
+    "ok": true
+  },
+  {
+    "name": "valid_bcc",
+    "source": "function sendEmail(message) {\n  const outgoing = { ...message };\n  outgoing.Bcc = \"audit@example.com\";\n  return outgoing;\n}\nmodule.exports = { sendEmail };\n",
+    "ok": true
+  },
+  {
+    "name": "missing_semicolon",
+    "source": "function sendEmail(message) {\n  const outgoing = { ...message };\n  outgoing.Bcc = \"audit@example.com\"\n  return outgoing;\n}\nmodule.exports = { sendEmail };\n",
+    "ok": false,
+    "error": "Use outgoing.Field = \"value\" assignments only."
+  },
+  {
+    "name": "missing_quote",
+    "source": "function sendEmail(message) {\n  const outgoing = { ...message };\n  outgoing.Cc = \"audit@example.com;\n  return outgoing;\n}\nmodule.exports = { sendEmail };\n",
+    "ok": false,
+    "error": "Use outgoing.Field = \"value\" assignments only."
+  },
+  {
+    "name": "unknown_field",
+    "source": "function sendEmail(message) {\n  const outgoing = { ...message };\n  outgoing.Extra = \"x\";\n  return outgoing;\n}\nmodule.exports = { sendEmail };\n",
+    "ok": false,
+    "error": "Use outgoing.Field = \"value\" assignments only."
+  },
+  {
+    "name": "seven_assignments",
+    "source": "function sendEmail(message) {\n  const outgoing = { ...message };\n  outgoing.Cc = \"x\";\n  outgoing.Cc = \"x\";\n  outgoing.Cc = \"x\";\n  outgoing.Cc = \"x\";\n  outgoing.Cc = \"x\";\n  outgoing.Cc = \"x\";\n  outgoing.Cc = \"x\";\n  return outgoing;\n}\nmodule.exports = { sendEmail };\n",
+    "ok": true
+  },
+  {
+    "name": "non_string_value",
+    "source": "function sendEmail(message) {\n  const outgoing = { ...message };\n  outgoing.Cc = 12;\n  return outgoing;\n}\nmodule.exports = { sendEmail };\n",
+    "ok": false,
+    "error": "Use outgoing.Field = \"value\" assignments only."
+  },
+  {
+    "name": "character_limit",
+    "source": "function sendEmail(message) {\n  const outgoing = { ...message };\n  return outgoing;\n}\nmodule.exports = { sendEmail };\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ",
+    "ok": false,
+    "error": "index.js must contain 1 to 2500 characters."
+  },
+  {
+    "name": "invalid_json_string",
+    "source": "function sendEmail(message) {\n  const outgoing = { ...message };\n  outgoing.Cc = \"\\x\";\n  return outgoing;\n}\nmodule.exports = { sendEmail };\n",
+    "ok": false,
+    "error": "Use a quoted string value for mail fields."
+  }
+]

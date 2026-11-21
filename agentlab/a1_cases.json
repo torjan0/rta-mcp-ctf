@@ -1,0 +1,117 @@
+[
+  {
+    "label": "Word count example",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}}]}",
+    "error": null
+  },
+  {
+    "label": "Syntax error",
+    "source": "{\n  ?}",
+    "error": "Check the JSON at line 2, column 3."
+  },
+  {
+    "label": "Document length",
+    "source": "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ",
+    "error": "The document takes at most 6000 characters."
+  },
+  {
+    "label": "Array document",
+    "source": "[]",
+    "error": "Use only name and tools for the server."
+  },
+  {
+    "label": "Extra server field",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}}], \"extra\": false}",
+    "error": "Use only name and tools for the server."
+  },
+  {
+    "label": "Server name",
+    "source": "{\"name\": \"3tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}}]}",
+    "error": "Use a valid server name."
+  },
+  {
+    "label": "Two tools",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{}, {}]}",
+    "error": "The server needs exactly one tool."
+  },
+  {
+    "label": "Extra tool field",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}, \"other\": 0}]}",
+    "error": "Give the tool a name, a description and an inputSchema."
+  },
+  {
+    "label": "Unavailable read_file",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"read_file\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}}]}",
+    "error": "Use a valid tool name that is available."
+  },
+  {
+    "label": "Unavailable list_files",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"list_files\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}}]}",
+    "error": "Use a valid tool name that is available."
+  },
+  {
+    "label": "Unavailable fetch_url",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"fetch_url\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}}]}",
+    "error": "Use a valid tool name that is available."
+  },
+  {
+    "label": "Unavailable xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}}]}",
+    "error": "Use a valid tool name that is available."
+  },
+  {
+    "label": "Empty description",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}}]}",
+    "error": "The tool description takes 1 to 1500 characters."
+  },
+  {
+    "label": "Unicode length",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}}]}",
+    "error": null
+  },
+  {
+    "label": "Extra schema field",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"], \"extra\": null}}]}",
+    "error": "Use an object inputSchema with a properties object and optional required list."
+  },
+  {
+    "label": "Nonobject schema",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": []}]}",
+    "error": "Use an object inputSchema with a properties object and optional required list."
+  },
+  {
+    "label": "Empty schema",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {}}}]}",
+    "error": null
+  },
+  {
+    "label": "Four parameters",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"a\": {\"type\": \"string\"}, \"b\": {\"type\": \"string\"}, \"c\": {\"type\": \"string\"}, \"d\": {\"type\": \"string\"}}, \"required\": [\"text\"]}}]}",
+    "error": "A tool takes at most 3 parameters."
+  },
+  {
+    "label": "Invalid parameter name",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}, \"1\": {}}, \"required\": [\"text\"]}}]}",
+    "error": "Use a valid parameter name."
+  },
+  {
+    "label": "Nonstring parameter",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"number\", \"description\": \"The text to count.\"}}, \"required\": [\"text\"]}}]}",
+    "error": "Each parameter takes a string and an optional description."
+  },
+  {
+    "label": "Parameter description length",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"}}, \"required\": [\"text\"]}}]}",
+    "error": "A parameter description takes at most 300 characters."
+  },
+  {
+    "label": "Required type",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": null}}]}",
+    "error": "The required list can name only declared parameters."
+  },
+  {
+    "label": "Inherited name",
+    "source": "{\"name\": \"word-tools\", \"tools\": [{\"name\": \"word_count\", \"description\": \"Counts the words in a piece of text.\", \"inputSchema\": {\"type\": \"object\", \"properties\": {\"text\": {\"type\": \"string\", \"description\": \"The text to count.\"}}, \"required\": [\"constructor\"]}}]}",
+    "error": "The required list can name only declared parameters."
+  }
+]

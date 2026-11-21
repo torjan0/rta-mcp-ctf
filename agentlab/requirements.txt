@@ -1,0 +1,7 @@
+# The Anthropic SDK stays below 2.0 while the lab runs Claude Haiku 4.5 on
+# Bedrock. 2.0 and later send an API version Bedrock accepts only for Claude 4.7
+# and later. Lift the pin when the model moves to Sonnet 5.5.
+anthropic[bedrock]>=1.0,<2
+starlette
+uvicorn
+python-multipart

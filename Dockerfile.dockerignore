@@ -1,0 +1,12 @@
+**
+!agentlab/
+!agentlab/**
+!deploy/
+!deploy/aws/
+!deploy/aws/ctfd_seed.py
+!selfhost/
+!selfhost/**
+agentlab/.venv/
+agentlab/**/__pycache__/
+agentlab/measure_*.py
+agentlab/try_*.py

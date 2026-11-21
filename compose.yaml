@@ -1,0 +1,76 @@
+services:
+  init:
+    image: rta-agentlab:local
+    pull_policy: never
+    user: "0"
+    command: ["python", "/app/selfhost/init.py"]
+    volumes:
+      - ctfd_data:/var/data
+    restart: "no"
+
+  ctfd:
+    image: ctfd/ctfd:3.8.9
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["export SECRET_KEY=$$(cat /var/data/secret_key); exec /opt/CTFd/docker-entrypoint.sh"]
+    environment:
+      DATABASE_URL: sqlite:////var/data/ctfd.db
+      UPLOAD_FOLDER: /var/data/uploads
+      LOG_FOLDER: /var/data/logs
+      WORKERS: "1"
+    volumes:
+      - ctfd_data:/var/data
+    ports:
+      - "127.0.0.1:8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  seed:
+    image: rta-agentlab:local
+    pull_policy: never
+    depends_on:
+      ctfd:
+        condition: service_healthy
+    command: ["python", "/app/selfhost/seed.py"]
+    environment: &lab_environment
+      AGENTLAB_STATE: /var/lib/agentlab
+      AGENTLAB_SELFHOST: "1"
+      AGENTLAB_A2_MODE: fake
+      AGENTLAB_A3_MODE: fake
+      AGENTLAB_CTFD_URL: http://ctfd:8000
+      AGENTLAB_CTFD_PUBLIC_URL: http://127.0.0.1:8000
+      AGENTLAB_MAX_ACCOUNTS: "10000"
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN:-}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-west-2}
+      AGENTLAB_REGION: ${AWS_DEFAULT_REGION:-us-west-2}
+      AGENTLAB_BACKEND: ${AGENTLAB_BACKEND:-auto}
+    volumes:
+      - lab_state:/var/lib/agentlab
+    restart: "no"
+
+  lab:
+    image: rta-agentlab:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      seed:
+        condition: service_completed_successfully
+    environment: *lab_environment
+    volumes:
+      - lab_state:/var/lib/agentlab
+    ports:
+      - "127.0.0.1:8100:8100"
+    restart: unless-stopped
+
+volumes:
+  ctfd_data:
+  lab_state:

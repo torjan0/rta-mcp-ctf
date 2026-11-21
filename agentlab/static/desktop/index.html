@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-challenge="$key" data-owner="$owner" data-initial="$initial" data-expires="$expires">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$title | RTA Workstation</title>
+<link rel="icon" href="/static/desktop/rta-logo.png">
+<link rel="stylesheet" href="/static/desktop/desktop.css">
+<script defer src="/static/desktop/terminal.js"></script>
+<script defer src="/static/desktop/handler-check.js"></script>
+<script defer src="/static/desktop/browser.js"></script>
+<script defer src="/static/desktop/$key.js"></script>
+<script defer src="/static/desktop/window-tools.js"></script>
+<script defer src="/static/desktop/shell-apps.js"></script>
+<script defer src="/static/desktop/desktop.js"></script>
+</head>
+<body>
+<header class="bar">
+<details id="activities"><summary><img class="brand-icon" src="/static/desktop/rta-logo.png" alt="">Activities</summary>
+<nav aria-label="Activities"><a href="/">All challenges</a><a href="/$key/classic">Classic view</a>
+<button type="button" id="workspace-menu" hidden>Replace workspace</button>
+<form action="/logout" method="post"><button>Log out</button></form></nav></details>
+<div class="bar-title"><span>$key</span>$title</div>
+<div class="right"><span id="remaining" hidden></span><span class="indicators" aria-hidden="true"><img src="/static/desktop/icons/network.svg" alt=""> <img src="/static/desktop/icons/volume.svg" alt=""> <img src="/static/desktop/icons/battery.svg" alt=""></span>
+<button id="bell" type="button" aria-label="Notifications" aria-expanded="false"><img src="/static/desktop/icons/bell.svg" alt=""></button>
+<button type="button" id="calendar-toggle" aria-label="Calendar" aria-expanded="false"><time id="clock"></time></button>
+<section id="notifications" class="popover" aria-label="Notifications" hidden><strong>Notifications</strong>
+<button id="sound" type="button" aria-pressed="false">Sound off</button><ol></ol></section>
+<section id="calendar" class="popover" aria-label="Calendar" hidden></section></div>
+</header>
+<div class="wallpaper" aria-hidden="true"><i></i><i></i><i></i><b><img src="/static/desktop/rta-logo.png" alt=""> RTA</b></div>
+<div id="splash" hidden><img src="/static/desktop/rta-logo.png" alt="RTA"></div>
+<nav id="shortcuts" aria-label="Desktop shortcuts"></nav>
+<div id="desktop-menu" class="popover" aria-label="Desktop actions" hidden></div>
+<main id="workspace" aria-label="Desktop windows">$panels</main>
+<nav id="dock" aria-label="Applications"></nav>
+<div id="notice" role="status" hidden>$notice</div>
+<noscript><a class="fallback" href="/$key/classic">Open classic view</a></noscript>
+</body></html>
